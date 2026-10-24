@@ -140,16 +140,49 @@
             </a>
         </nav>
 
+        <!-- Right Side Header Actions (Includes Mobile 3-Line Menu Button) -->
         <div class="flex items-center gap-3">
-            <a href="https://www.dimexchain.tech/dash" target="_blank" class="gradient-btn-gold px-5 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center gap-2">
-                <i class="fa-solid fa-vault"></i> Native Staking
+            <a href="https://www.dimexchain.tech/dash" target="_blank" class="hidden sm:flex gradient-btn-gold px-4 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider items-center gap-2">
+                <i class="fa-solid fa-vault"></i> Native Dash
             </a>
-            
-            <a href="https://www.dimex.tech/dash" target="_blank" class="cyan-outline-btn px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+
+            <!-- Mobile Hamburger Menu Button (3 Lines Restored) -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 rounded-xl bg-bgCard border border-borderGlow text-white flex items-center justify-center text-xl">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Menu (Links restored for mobile menu) -->
+    <div id="mobile-menu" class="fixed top-[69px] left-0 w-full bg-bgCard/95 border-b border-borderGlow backdrop-blur-2xl p-6 flex flex-col gap-4 hidden z-30 lg:hidden transition-all">
+        <a href="#about" onclick="toggleMobileMenu()" class="text-white font-medium py-2 border-b border-borderGlow/50 flex justify-between items-center">
+            <span>About Native Coin</span> <i class="fa-solid fa-chevron-right text-xs text-textSub"></i>
+        </a>
+        <a href="#rpc-section" onclick="toggleMobileMenu()" class="text-white font-medium py-2 border-b border-borderGlow/50 flex justify-between items-center">
+            <span>RPC Parameters</span> <i class="fa-solid fa-chevron-right text-xs text-textSub"></i>
+        </a>
+        <a href="#ecosystem" onclick="toggleMobileMenu()" class="text-white font-medium py-2 border-b border-borderGlow/50 flex justify-between items-center">
+            <span>Ecosystem Portals</span> <i class="fa-solid fa-chevron-right text-xs text-textSub"></i>
+        </a>
+        <a href="#calculator" onclick="toggleMobileMenu()" class="text-white font-medium py-2 border-b border-borderGlow/50 flex justify-between items-center">
+            <span>Staking Calculator</span> <i class="fa-solid fa-chevron-right text-xs text-textSub"></i>
+        </a>
+        <a href="#tokenomics" onclick="toggleMobileMenu()" class="text-white font-medium py-2 border-b border-borderGlow/50 flex justify-between items-center">
+            <span>Tokenomics</span> <i class="fa-solid fa-chevron-right text-xs text-textSub"></i>
+        </a>
+        <a href="#roadmap" onclick="toggleMobileMenu()" class="text-white font-medium py-2 flex justify-between items-center">
+            <span>Roadmap</span> <i class="fa-solid fa-chevron-right text-xs text-textSub"></i>
+        </a>
+
+        <div class="pt-2 flex flex-col gap-3">
+            <a href="https://www.dimexchain.tech/dash" target="_blank" class="gradient-btn-gold w-full text-center py-3 rounded-xl font-bold text-sm">
+                <i class="fa-solid fa-vault"></i> Open Native Staking
+            </a>
+            <a href="https://www.dimex.tech/dash" target="_blank" class="cyan-outline-btn w-full text-center py-3 rounded-xl font-bold text-sm">
                 <i class="fa-solid fa-coins"></i> Token Staking & Buy
             </a>
         </div>
-    </header>
+    </div>
 
     <main class="relative z-10 flex-grow">
 
@@ -172,7 +205,7 @@
                     DimeX Chain (DMXC) delivers ultra-fast block finality, near-zero transaction fees, 10 Billion native coin supply, and native multi-tier staking contracts designed for sustainable crypto economies.
                 </p>
 
-                <!-- Hero Action CTAs (User Specified Links) -->
+                <!-- Hero Action CTAs -->
                 <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
                     <a href="https://www.dimexchain.tech/dash" target="_blank" class="gradient-btn-gold px-7 py-4 rounded-xl font-black text-sm uppercase tracking-wider flex items-center gap-2.5">
                         <i class="fa-solid fa-vault text-base"></i> Native Coin Staking
@@ -204,7 +237,7 @@
                 </div>
             </div>
 
-            <!-- Right Hero 3D Interactive Card Showcase -->
+            <!-- Right Hero 3D Card Showcase -->
             <div class="lg:col-span-5 relative flex justify-center">
                 <div class="absolute w-80 h-80 bg-primaryGold/20 rounded-full blur-3xl -z-10 animate-pulse"></div>
                 <div class="absolute w-60 h-60 bg-accentCyan/20 rounded-full blur-3xl -z-10 animate-pulse delay-1000"></div>
@@ -388,7 +421,7 @@
                 <div class="glass-panel p-8 rounded-3xl border-borderGlow flex flex-col justify-between hover:border-accentGreen transition-all">
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-accentGreen/10 border border-accentGreen/40 text-accentGreen flex items-center justify-center text-2xl mb-6">
-                            <i class="fa-solid fa-right-left"></i>
+                            <i class="fa-solid fa-file-pdf"></i>
                         </div>
                         <h3 class="text-xl font-extrabold text-white mb-2">Whitepaper (PDF)</h3>
                         <p class="text-xs text-textSub leading-relaxed mb-6">Read official DimeX whitepaper and tokenomics specifications.</p>
@@ -398,30 +431,33 @@
             </div>
         </section>
 
-        <!-- INTERACTIVE STAKING APY CALCULATOR (ONLY CALCULATOR & HEADING) -->
+        <!-- INTERACTIVE YIELD CALCULATOR ONLY (STAKING WORDS REMOVED) -->
         <section id="calculator" class="max-w-4xl mx-auto px-4 lg:px-12 mb-24 scroll-mt-28">
             <div class="glass-panel rounded-3xl p-8 lg:p-12 border-borderGlow">
                 <div class="text-center mb-10">
                     <span class="text-xs font-bold uppercase tracking-widest text-primaryGold bg-primaryGold/10 px-3 py-1 rounded-full border border-primaryGold/30">
-                        Staking Yield Calculator
+                        Yield Calculator
                     </span>
-                    <h2 class="text-3xl font-black text-white mt-3">Estimate Your Staking Returns</h2>
+                    <h2 class="text-3xl font-black text-white mt-3">Calculate Expected Yield</h2>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                     <div class="lg:col-span-7 space-y-6">
                         <div>
-                            <label class="text-xs font-bold uppercase tracking-wider text-textSub block mb-3">Select Lockup Period</label>
-                            <div class="grid grid-cols-3 gap-3">
-                                <button onclick="setTier(30, 0.12)" id="tier-30" class="tier-btn py-3 rounded-xl border border-primaryGold bg-primaryGold/20 text-primaryGold font-bold text-xs">30 Days (12% APY)</button>
-                                <button onclick="setTier(90, 0.18)" id="tier-90" class="tier-btn py-3 rounded-xl border border-borderGlow bg-bgMain text-textSub font-bold text-xs">90 Days (18% APY)</button>
-                                <button onclick="setTier(365, 0.36)" id="tier-365" class="tier-btn py-3 rounded-xl border border-borderGlow bg-bgMain text-textSub font-bold text-xs">365 Days (36% APY)</button>
+                            <label class="text-xs font-bold uppercase tracking-wider text-textSub block mb-3">Select Plan Period</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="setPlan(180, 0.0025)" id="plan-180" class="plan-btn py-3 rounded-xl border border-primaryGold bg-primaryGold/20 text-primaryGold font-bold text-xs">
+                                    6 Months (0.25%/day)
+                                </button>
+                                <button onclick="setPlan(365, 0.0030)" id="plan-365" class="plan-btn py-3 rounded-xl border border-borderGlow bg-bgMain text-textSub font-bold text-xs">
+                                    1 Year (0.30%/day)
+                                </button>
                             </div>
                         </div>
 
                         <div>
                             <div class="flex justify-between text-xs font-bold mb-2">
-                                <span class="text-textSub">Staking Amount (DMXC)</span>
+                                <span class="text-textSub">Deposit Amount (DMXC)</span>
                                 <span id="calc-amount-display" class="text-primaryGold font-mono text-sm">100,000 DMXC</span>
                             </div>
                             <input type="range" id="calc-slider" min="10000" max="10000000" step="10000" value="100000" class="w-full h-2.5 bg-bgMain rounded-lg appearance-none cursor-pointer accent-primaryGold">
@@ -429,20 +465,20 @@
                     </div>
 
                     <div class="lg:col-span-5 bg-bgMain p-6 rounded-2xl border border-borderGlow flex flex-col gap-4">
-                        <h4 class="text-xs font-extrabold uppercase tracking-widest text-textSub border-b border-borderGlow pb-3">Projected Summary</h4>
+                        <h4 class="text-xs font-extrabold uppercase tracking-widest text-textSub border-b border-borderGlow pb-3">Yield Summary</h4>
                         <div class="flex justify-between items-center text-sm">
-                            <span class="text-textSub">Daily Rewards</span>
-                            <span id="calc-daily" class="font-mono font-bold text-white">32.87 DMXC</span>
+                            <span class="text-textSub">Daily Yield</span>
+                            <span id="calc-daily" class="font-mono font-bold text-primaryGold">250 DMXC</span>
                         </div>
                         <div class="flex justify-between items-center text-sm">
-                            <span class="text-textSub">Monthly Rewards</span>
-                            <span id="calc-monthly" class="font-mono font-bold text-accentCyan">1,000.00 DMXC</span>
+                            <span class="text-textSub">Total Return</span>
+                            <span id="calc-total" class="font-mono font-bold text-accentCyan">45,000 DMXC</span>
                         </div>
                         <div class="flex justify-between items-center text-sm pt-2 border-t border-borderGlow/60">
-                            <span class="text-textSub font-bold">Total Period Return</span>
-                            <span id="calc-total" class="font-mono font-black text-xl text-primaryGold">12,000.00 DMXC</span>
+                            <span class="text-textSub font-bold">USD Value (~$0.10)</span>
+                            <span id="calc-usd" class="font-mono font-black text-xl text-accentGreen">$4,500.00</span>
                         </div>
-                        <a href="https://www.dimexchain.tech/dash" target="_blank" class="gradient-btn-gold block text-center w-full py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider mt-2">Stake Now</a>
+                        <a href="https://www.dimexchain.tech/dash" target="_blank" class="gradient-btn-gold block text-center w-full py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider mt-2">Open Staking Portal</a>
                     </div>
                 </div>
             </div>
@@ -481,7 +517,7 @@
             </div>
         </section>
 
-        <!-- ROADMAP SECTION -->
+        <!-- ROADMAP SECTION (CEX TARGET BOX RESTORED) -->
         <section id="roadmap" class="max-w-5xl mx-auto px-4 lg:px-12 mb-24 scroll-mt-28">
             <div class="text-center mb-12">
                 <span class="text-xs font-bold uppercase tracking-widest text-primaryGold">Strategic Execution</span>
@@ -490,34 +526,94 @@
             <div class="relative border-l-2 border-borderGlow ml-4 lg:ml-32 space-y-10">
                 <div class="relative pl-8">
                     <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-accentGreen/20 border-2 border-accentGreen text-accentGreen flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-check"></i></div>
-                    <div class="glass-panel p-6 rounded-2xl border-borderGlow"><h3 class="text-xl font-bold text-white mb-2">Mainnet Launch & QBFT Genesis</h3></div>
+                    <div class="glass-panel p-6 rounded-2xl border-borderGlow">
+                        <span class="text-xs font-bold text-accentGreen uppercase tracking-wider block mb-1">Phase 1 - Completed</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Mainnet Launch & QBFT Genesis</h3>
+                        <p class="text-xs text-textSub leading-relaxed">4-Node QBFT validator cluster deployment, 10B genesis allocation, RPC setup, and Explorer deployment.</p>
+                    </div>
                 </div>
                 <div class="relative pl-8">
                     <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-primaryGold/20 border-2 border-primaryGold text-primaryGold flex items-center justify-center text-xs font-bold">2</div>
-                    <div class="glass-panel p-6 rounded-2xl border-primaryGold/40"><h3 class="text-xl font-bold text-white mb-2">Staking Contracts & Portal Integration</h3></div>
+                    <div class="glass-panel p-6 rounded-2xl border-primaryGold/40">
+                        <span class="text-xs font-bold text-primaryGold uppercase tracking-wider block mb-1">Phase 2 - Active Live</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Staking Contracts & Portal Integration</h3>
+                        <p class="text-xs text-textSub leading-relaxed">Deployment of level-based staking smart contracts, official web dashboard integration.</p>
+                    </div>
                 </div>
                 <div class="relative pl-8">
                     <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-bgCard border-2 border-borderGlow text-textSub flex items-center justify-center text-xs font-bold">3</div>
-                    <div class="glass-panel p-6 rounded-2xl border-borderGlow"><h3 class="text-xl font-bold text-white mb-2">Native DEX & Bridge Development</h3></div>
+                    <div class="glass-panel p-6 rounded-2xl border-borderGlow">
+                        <span class="text-xs font-bold text-accentCyan uppercase tracking-wider block mb-1">Phase 3 - Upcoming</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Native DEX & Bridge Development</h3>
+                        <p class="text-xs text-textSub leading-relaxed">Launch of native decentralized swap hub and cross-chain wrapping bridge.</p>
+                    </div>
                 </div>
                 <div class="relative pl-8">
                     <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-bgCard border-2 border-borderGlow text-textSub flex items-center justify-center text-xs font-bold">4</div>
-                    <div class="glass-panel p-6 rounded-2xl border-borderGlow"><h3 class="text-xl font-bold text-white mb-2">Centralized Exchange (CEX) Target (1 Year)</h3></div>
+                    <div class="glass-panel p-6 rounded-2xl border-borderGlow">
+                        <span class="text-xs font-bold text-accentPurple uppercase tracking-wider block mb-1">Phase 4 - Target 1 Year</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Centralized Exchange (CEX) Listing Target</h3>
+                        <p class="text-xs text-textSub leading-relaxed">Official DimeX Native Coin listing on Centralized Exchanges (CEX) targeted 1 year from now.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (TELEGRAM, X, GITHUB & CONTACT RESTORED) -->
     <footer class="bg-[#02060e] border-t border-borderGlow/80 relative z-10 py-12 px-4 lg:px-12">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-textSub gap-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+            
+            <div class="md:col-span-5">
+                <a href="#" class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 rounded-lg bg-primaryGold/20 p-0.5 border border-primaryGold flex items-center justify-center">
+                        <img src="https://raw.githubusercontent.com/dimexchain-coder/native/main/dimex-logo-512x512-removebg-preview.png" alt="DimeX Logo" class="w-full h-full object-contain">
+                    </div>
+                    <span class="text-xl font-black text-white tracking-wider uppercase">DimeX Chain</span>
+                </a>
+                <p class="text-xs text-textSub max-w-sm leading-relaxed mb-4">
+                    DimeX Chain is a decentralized high-speed Layer-1 native blockchain network powering scalable financial utilities.
+                </p>
+                <span class="text-xs text-textSub block font-mono">
+                    Official Contact: <a href="mailto:info@dimex.world" class="text-accentCyan hover:underline">info@dimex.world</a>
+                </span>
+            </div>
+
+            <div class="md:col-span-3">
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Portals & Tools</h4>
+                <ul class="space-y-2 text-xs text-textSub">
+                    <li><a href="https://www.dimexchain.tech/dash" target="_blank" class="hover:text-primaryGold">Native Staking Dash</a></li>
+                    <li><a href="https://www.dimex.tech/dash" target="_blank" class="hover:text-primaryGold">Token Staking & Buy</a></li>
+                    <li><a href="https://explorer.dimexchain.tech" target="_blank" class="hover:text-primaryGold">Block Explorer</a></li>
+                    <li><a href="https://raw.githubusercontent.com/dimex1601-dev/DimeX---Profile-/main/DimeX%20(DMX)%20%20Whitepaper.pdf" target="_blank" class="hover:text-primaryGold">Whitepaper (PDF)</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4">
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Community Ecosystem</h4>
+                <div class="flex items-center gap-4 text-xl">
+                    <a href="https://t.me/" target="_blank" class="w-10 h-10 rounded-xl bg-bgCard border border-borderGlow text-textSub hover:text-accentCyan hover:border-accentCyan flex items-center justify-center transition-all" title="Telegram Community">
+                        <i class="fa-brands fa-telegram"></i>
+                    </a>
+                    <a href="https://x.com/DimeXGlobal" target="_blank" class="w-10 h-10 rounded-xl bg-bgCard border border-borderGlow text-textSub hover:text-accentCyan hover:border-accentCyan flex items-center justify-center transition-all" title="X (Twitter)">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a href="https://github.com/dimex1601-dev" target="_blank" class="w-10 h-10 rounded-xl bg-bgCard border border-borderGlow text-textSub hover:text-accentCyan hover:border-accentCyan flex items-center justify-center transition-all" title="GitHub Repository">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-borderGlow/40 flex flex-col sm:flex-row justify-between items-center text-xs text-textSub gap-4">
             <p>&copy; 2026 DimeX Chain Ecosystem. All Rights Reserved.</p>
             <p class="font-mono">Chain ID: 1723 | QBFT Consensus Active</p>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
@@ -555,6 +651,13 @@
         }
         animateParticles();
 
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            icon.className = menu.classList.contains('hidden') ? 'fa-solid fa-bars' : 'fa-solid fa-xmark';
+        }
+
         function showToast(msg) {
             const toast = document.getElementById('toast');
             document.getElementById('toast-msg').innerText = msg;
@@ -587,26 +690,29 @@
             } else { alert("MetaMask not installed!"); }
         }
 
-        let selectedApy = 0.12, selectedDays = 30;
+        let selectedDailyRate = 0.0025, selectedDays = 180;
         const slider = document.getElementById('calc-slider'), display = document.getElementById('calc-amount-display');
-        const dailyEl = document.getElementById('calc-daily'), monthlyEl = document.getElementById('calc-monthly'), totalEl = document.getElementById('calc-total');
+        const dailyEl = document.getElementById('calc-daily'), totalEl = document.getElementById('calc-total'), usdEl = document.getElementById('calc-usd');
 
-        function setTier(days, apy) {
-            selectedDays = days; selectedApy = apy;
-            document.querySelectorAll('.tier-btn').forEach(btn => {
-                btn.className = "tier-btn py-3 rounded-xl border border-borderGlow bg-bgMain text-textSub font-bold text-xs";
+        function setPlan(days, rate) {
+            selectedDays = days; selectedDailyRate = rate;
+            document.querySelectorAll('.plan-btn').forEach(btn => {
+                btn.className = "plan-btn py-3 rounded-xl border border-borderGlow bg-bgMain text-textSub font-bold text-xs";
             });
-            document.getElementById(`tier-${days}`).className = "tier-btn py-3 rounded-xl border border-primaryGold bg-primaryGold/20 text-primaryGold font-bold text-xs";
+            document.getElementById(`plan-${days}`).className = "plan-btn py-3 rounded-xl border border-primaryGold bg-primaryGold/20 text-primaryGold font-bold text-xs";
             updateCalculator(slider.value);
         }
 
         function updateCalculator(val) {
             const amount = parseFloat(val) || 0;
             display.innerText = `${amount.toLocaleString()} DMXC`;
-            const yearly = amount * selectedApy, daily = yearly / 365, monthly = daily * 30, total = daily * selectedDays;
-            dailyEl.innerText = `${daily.toLocaleString(undefined, {maximumFractionDigits: 2})} DMXC`;
-            monthlyEl.innerText = `${monthly.toLocaleString(undefined, {maximumFractionDigits: 2})} DMXC`;
-            totalEl.innerText = `${total.toLocaleString(undefined, {maximumFractionDigits: 2})} DMXC`;
+            const daily = amount * selectedDailyRate;
+            const total = daily * selectedDays;
+            const usd = total * 0.10;
+
+            dailyEl.innerText = `${daily.toLocaleString()} DMXC`;
+            totalEl.innerText = `${total.toLocaleString()} DMXC`;
+            usdEl.innerText = `$${usd.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
         }
         slider.addEventListener('input', (e) => updateCalculator(e.target.value));
 
