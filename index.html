@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DimeX Web3 Dashboard | Staking & Binary Control Center</title>
+    <title>DimeX Chain | Web3 User Dashboard</title>
     <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --bg-dark: #06090e;
-            --card-bg: rgba(13, 19, 31, 0.85);
+            --bg-dark: #080b11;
+            --card-bg: rgba(16, 23, 38, 0.75);
             --border-glow: rgba(0, 240, 255, 0.25);
             --cyan-accent: #00f0ff;
             --gold-accent: #ffb703;
             --green-accent: #00e676;
             --text-main: #f0f6fc;
             --text-muted: #8b949e;
+            --glass-grad: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
         }
 
         * {
@@ -32,23 +33,23 @@
             color: var(--text-main);
             min-height: 100vh;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 240, 255, 0.07) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(255, 183, 3, 0.05) 0%, transparent 40%);
+                radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(255, 183, 3, 0.06) 0%, transparent 40%);
             background-attachment: fixed;
         }
 
-        /* Top Header Navigation */
+        /* Header */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 5%;
-            background: rgba(8, 11, 17, 0.9);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.5rem 5%;
             backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
+            background: rgba(8, 11, 17, 0.85);
         }
 
         .brand-logo {
@@ -60,13 +61,13 @@
         }
 
         .brand-logo img {
-            height: 40px;
+            height: 45px;
             filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.4));
         }
 
         .brand-name {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
             background: linear-gradient(90deg, #fff, var(--cyan-accent));
             -webkit-background-clip: text;
@@ -77,7 +78,7 @@
             background: linear-gradient(135deg, var(--cyan-accent), #0077ff);
             color: #000;
             border: none;
-            padding: 0.75rem 1.6rem;
+            padding: 0.75rem 1.8rem;
             border-radius: 30px;
             font-weight: 700;
             cursor: pointer;
@@ -93,380 +94,408 @@
             box-shadow: 0 0 30px rgba(0, 240, 255, 0.7);
         }
 
-        /* Dashboard Container */
-        .dash-container {
-            padding: 2.5rem 5%;
+        /* Container */
+        .dashboard-container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 3rem 5%;
         }
 
-        .dash-title-bar {
+        .page-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             flex-wrap: wrap;
             gap: 1rem;
         }
 
-        .dash-title {
-            font-size: 2rem;
+        .page-title {
+            font-size: 2.2rem;
             font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .chain-badge {
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid var(--cyan-accent);
-            color: var(--cyan-accent);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        /* Overview Grid Cards */
-        .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .stat-card {
             background: var(--card-bg);
             border: 1px solid var(--border-glow);
-            padding: 1.8rem;
-            border-radius: 18px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            color: var(--cyan-accent);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             backdrop-filter: blur(10px);
         }
 
-        .stat-header {
-            display: flex;
-            justify-content: space-between;
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .stat-box:hover {
+            border-color: var(--cyan-accent);
+            transform: translateY(-3px);
+        }
+
+        .stat-label {
             color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .stat-value {
-            font-size: 1.8rem;
+        .stat-number {
+            font-size: 2rem;
             font-weight: 800;
-            color: var(--text-main);
             font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-main);
         }
 
         .stat-sub {
             font-size: 0.85rem;
             color: var(--green-accent);
-            margin-top: 0.4rem;
+            margin-top: 0.5rem;
         }
 
-        /* Main Portal Grid */
-        .portal-grid {
+        /* Main Workspace Grid */
+        .workspace-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 2.5rem;
         }
 
-        .portal-card {
+        .glass-card {
             background: var(--card-bg);
             border: 1px solid var(--border-glow);
-            padding: 2rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            backdrop-filter: blur(12px);
             margin-bottom: 2rem;
         }
 
-        .card-header-title {
-            font-size: 1.3rem;
+        .card-title {
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             color: var(--cyan-accent);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Staking Plan Options */
-        .plan-options {
+        /* Plans Selection */
+        .plans-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
         }
 
-        .plan-box {
-            border: 2px solid rgba(255, 255, 255, 0.1);
+        .plan-card-opt {
             background: rgba(255, 255, 255, 0.02);
-            padding: 1.2rem;
-            border-radius: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
             cursor: pointer;
             transition: 0.3s;
-            text-align: center;
         }
 
-        .plan-box.active {
+        .plan-card-opt.selected {
             border-color: var(--cyan-accent);
             background: rgba(0, 240, 255, 0.08);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
         }
 
-        .plan-duration {
-            font-size: 1.1rem;
+        .plan-time {
             font-weight: 700;
-            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
         }
 
-        .plan-rate {
+        .plan-apr {
             color: var(--gold-accent);
             font-weight: 800;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
 
-        /* Form Controls */
-        .form-group {
+        /* Input Elements */
+        .input-group {
             margin-bottom: 1.5rem;
         }
 
-        .form-label {
+        .input-label {
             display: block;
-            margin-bottom: 0.6rem;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
         }
 
-        .input-field {
+        .custom-input {
             width: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.45);
             border: 1px solid var(--border-glow);
-            padding: 1rem;
-            border-radius: 12px;
+            padding: 1.1rem 1.2rem;
+            border-radius: 14px;
             color: #fff;
             font-size: 1.1rem;
             outline: none;
+            transition: 0.3s;
         }
 
-        .input-field:focus {
+        .custom-input:focus {
             border-color: var(--cyan-accent);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
         }
 
-        .btn-action {
+        .btn-primary-action {
             width: 100%;
             background: linear-gradient(135deg, var(--cyan-accent), #0077ff);
             color: #000;
             border: none;
-            padding: 1rem;
-            border-radius: 12px;
+            padding: 1.2rem;
+            border-radius: 14px;
             font-size: 1.1rem;
             font-weight: 800;
             cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
             transition: 0.3s;
         }
 
-        .btn-action:hover {
-            opacity: 0.9;
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+        .btn-primary-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
         }
 
-        /* Binary Volume Box Grid */
-        .binary-boxes {
+        /* Binary Boxes */
+        .binary-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 1.2rem;
             margin-bottom: 1.5rem;
         }
 
-        .vol-box {
+        .binary-box {
             background: rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 1.2rem;
-            border-radius: 14px;
+            border-radius: 16px;
+            padding: 1.5rem;
             text-align: center;
         }
 
-        .vol-title {
+        .binary-title {
             color: var(--text-muted);
             font-size: 0.85rem;
             margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
-        .vol-amount {
-            font-size: 1.4rem;
+        .binary-val {
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--gold-accent);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* Referral Link Input Box */
-        .ref-box {
+        .carry-box {
+            background: rgba(255, 183, 3, 0.05);
+            border: 1px solid rgba(255, 183, 3, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Referral Box */
+        .ref-wrapper {
             display: flex;
             gap: 10px;
         }
 
-        .ref-box input {
-            flex: 1;
-            font-size: 0.9rem;
-        }
-
-        .btn-copy {
+        .btn-copy-ref {
             background: var(--gold-accent);
             color: #000;
             border: none;
-            padding: 0 1.2rem;
-            border-radius: 12px;
+            padding: 0 1.5rem;
+            border-radius: 14px;
             font-weight: 700;
             cursor: pointer;
+            transition: 0.3s;
         }
 
-        @media (max-width: 992px) {
-            .portal-grid { grid-template-columns: 1fr; }
+        .btn-copy-ref:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 1024px) {
+            .workspace-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Dashboard Top Header -->
+    <!-- Header -->
     <header>
         <a href="index.html" class="brand-logo">
             <img src="https://raw.githubusercontent.com/dimexchain-coder/native/main/dimex-logo-512x512-removebg-preview.png" alt="DimeX Logo">
-            <span class="brand-name">DimeX Chain Portal</span>
+            <span class="brand-name">DimeX Chain</span>
         </a>
-        <button class="btn-wallet" id="connectWalletBtn" onclick="connectMetaMask()">
-            <i class="fa-solid fa-wallet"></i> <span id="walletText">Connect MetaMask</span>
+        <button class="btn-wallet" id="walletConnectBtn" onclick="connectWallet()">
+            <i class="fa-solid fa-wallet"></i> <span id="walletBtnText">Connect MetaMask</span>
         </button>
     </header>
 
-    <div class="dash-container">
+    <div class="dashboard-container">
         
-        <!-- Title Bar -->
-        <div class="dash-title-bar">
+        <!-- Page Header -->
+        <div class="page-header">
             <div>
-                <h1 class="dash-title">User Web3 Dashboard</h1>
-                <p style="color: var(--text-muted);">Real-time Staking, Yield Accrual & Binary Network Metrics</p>
+                <h1 class="page-title">User Dashboard</h1>
+                <p style="color: var(--text-muted);">Staking Vaults, Real-time Yields & Binary Network Control</p>
             </div>
             <div class="chain-badge">
-                <i class="fa-solid fa-link"></i> DimeX Network (Chain ID: 1723)
+                <i class="fa-solid fa-circle" style="font-size: 0.6rem; color: var(--green-accent);"></i> DMXC Mainnet (Chain ID: 1723)
             </div>
         </div>
 
-        <!-- Stat Overview Cards -->
-        <div class="overview-grid">
-            <div class="stat-card">
-                <div class="stat-header">
+        <!-- Stat Cards -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-label">
                     <span>Native DMXC Balance</span>
                     <i class="fa-solid fa-coins" style="color: var(--cyan-accent);"></i>
                 </div>
-                <div class="stat-value" id="dmxcBalance">0.00 DMXC</div>
-                <div class="stat-sub">~$0.00 USD Value</div>
+                <div class="stat-number" id="dmxcBal">0.00</div>
+                <div class="stat-sub">~$0.00 USD</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-header">
+            <div class="stat-box">
+                <div class="stat-label">
                     <span>USDT Balance</span>
                     <i class="fa-solid fa-dollar-sign" style="color: var(--green-accent);"></i>
                 </div>
-                <div class="stat-value" id="usdtBalance">0.00 USDT</div>
+                <div class="stat-number" id="usdtBal">0.00</div>
                 <div class="stat-sub">BEP20 / Native USDT</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-header">
+            <div class="stat-box">
+                <div class="stat-label">
                     <span>Total Active Staked</span>
                     <i class="fa-solid fa-vault" style="color: var(--gold-accent);"></i>
                 </div>
-                <div class="stat-value" id="totalStaked">0 DMXC</div>
-                <div class="stat-sub">Yielding Second-by-Second</div>
+                <div class="stat-number" id="stakedTotal">0 DMXC</div>
+                <div class="stat-sub">Second-by-Second Yield</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-header">
+            <div class="stat-box">
+                <div class="stat-label">
                     <span>Pending Claimable Yield</span>
                     <i class="fa-solid fa-chart-line" style="color: var(--cyan-accent);"></i>
                 </div>
-                <div class="stat-value" id="pendingYield" style="color: var(--green-accent);">0.0000 DMXC</div>
-                <div class="stat-sub">Live Real-time Accrual</div>
+                <div class="stat-number" id="pendingYield" style="color: var(--green-accent);">0.0000</div>
+                <div class="stat-sub">Real-time Accrual</div>
             </div>
         </div>
 
-        <!-- Main Portal Section -->
-        <div class="portal-grid">
+        <!-- Workspace Grid -->
+        <div class="workspace-grid">
             
-            <!-- Left Side: Staking Portal -->
+            <!-- Left Column: Staking & Claiming -->
             <div>
-                <div class="portal-card">
-                    <h3 class="card-header-title"><i class="fa-solid fa-fire"></i> Stake DMXC Native Coins</h3>
+                <div class="glass-card">
+                    <h3 class="card-title"><i class="fa-solid fa-fire"></i> Staking Investment Vault</h3>
                     
-                    <div class="plan-options">
-                        <div class="plan-box active" id="plan6M" onclick="selectPlan(0)">
-                            <div class="plan-duration">6 Months Vault</div>
-                            <div class="plan-rate">0.25% <span style="font-size:0.8rem; color: #fff;">/ Day</span></div>
-                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Total ~45% Yield</div>
+                    <div class="plans-grid">
+                        <div class="plan-card-opt selected" id="plan6M" onclick="switchPlan(0)">
+                            <div class="plan-time">6 Months Plan</div>
+                            <div class="plan-apr">0.25% <span style="font-size:0.75rem; color:#fff;">/day</span></div>
+                            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:5px;">Total ~45% Yield</div>
                         </div>
-                        <div class="plan-box" id="plan1Y" onclick="selectPlan(1)">
-                            <div class="plan-duration">1 Year Vault</div>
-                            <div class="plan-rate">0.30% <span style="font-size:0.8rem; color: #fff;">/ Day</span></div>
-                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Total ~109.5% Yield</div>
+                        <div class="plan-card-opt" id="plan1Y" onclick="switchPlan(1)">
+                            <div class="plan-time">1 Year Plan</div>
+                            <div class="plan-apr">0.30% <span style="font-size:0.75rem; color:#fff;">/day</span></div>
+                            <div style="font-size:0.8rem; color:var(--text-muted); margin-top:5px;">Total ~109.5% Yield</div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Amount to Stake (DMXC)</label>
-                        <input type="number" class="input-field" id="stakeAmount" placeholder="e.g. 1000">
+                    <div class="input-group">
+                        <label class="input-label">Stake Amount (DMXC)</label>
+                        <input type="number" class="custom-input" id="stakeInputAmount" placeholder="Enter DMXC amount">
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Sponsor Address (Referrer)</label>
-                        <input type="text" class="input-field" id="sponsorAddress" placeholder="0x...">
+                    <div class="input-group">
+                        <label class="input-label">Sponsor / Referrer Address</label>
+                        <input type="text" class="custom-input" id="sponsorInputAddr" placeholder="0x...">
                     </div>
 
-                    <button class="btn-action" onclick="executeStake()"><i class="fa-solid fa-lock"></i> Confirm & Lock Stake</button>
+                    <button class="btn-primary-action" onclick="submitStakeTransaction()"><i class="fa-solid fa-lock"></i> Lock & Stake Now</button>
                 </div>
 
-                <!-- Claim Rewards Portal -->
-                <div class="portal-card">
-                    <h3 class="card-header-title"><i class="fa-solid fa-gift"></i> Claim Accumulated Rewards</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Choose payout currency mode. Convert to USDT or claim directly as DMXC.</p>
-
-                    <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
-                        <button class="btn-action" style="background: rgba(0,240,255,0.1); border: 1px solid var(--cyan-accent); color: var(--cyan-accent);" onclick="claimRewards(false)">
+                <!-- Claim Card -->
+                <div class="glass-card">
+                    <h3 class="card-title"><i class="fa-solid fa-gift"></i> Claim Rewards & Payout</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">Select your payout currency mode to receive accumulated second-by-second yield.</p>
+                    
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn-primary-action" style="background: rgba(0, 240, 255, 0.1); border: 1px solid var(--cyan-accent); color: var(--cyan-accent);" onclick="claimYield(false)">
                             Claim as DMXC Coin
                         </button>
-                        <button class="btn-action" style="background: rgba(0,230,118,0.1); border: 1px solid var(--green-accent); color: var(--green-accent);" onclick="claimRewards(true)">
+                        <button class="btn-primary-action" style="background: rgba(0, 230, 118, 0.1); border: 1px solid var(--green-accent); color: var(--green-accent);" onclick="claimYield(true)">
                             Claim as USDT
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Side: Binary & Referral Center -->
+            <!-- Right Column: Binary Volume & Referral Center -->
             <div>
-                <div class="portal-card">
-                    <h3 class="card-header-title"><i class="fa-solid fa-sitemap"></i> Binary Pair Box Volume</h3>
+                <div class="glass-card">
+                    <h3 class="card-title"><i class="fa-solid fa-sitemap"></i> Binary Pair Box Center</h3>
                     
-                    <div class="binary-boxes">
-                        <div class="vol-box">
-                            <div class="vol-title">LEFT BOX VOLUME</div>
-                            <div class="vol-amount" id="leftVol">0 DMXC</div>
+                    <div class="binary-container">
+                        <div class="binary-box">
+                            <div class="binary-title">LEFT BOX VOLUME</div>
+                            <div class="binary-val" id="leftBoxVol">0 DMXC</div>
                         </div>
-                        <div class="vol-box">
-                            <div class="vol-title">RIGHT BOX VOLUME</div>
-                            <div class="vol-amount" id="rightVol">0 DMXC</div>
+                        <div class="binary-box">
+                            <div class="binary-title">RIGHT BOX VOLUME</div>
+                            <div class="binary-val" id="rightBoxVol">0 DMXC</div>
                         </div>
                     </div>
 
-                    <div class="vol-box" style="margin-bottom: 1.5rem; background: rgba(255, 183, 3, 0.05); border-color: rgba(255, 183, 3, 0.2);">
-                        <div class="vol-title">CARRY FORWARD BALANCE</div>
-                        <div class="vol-amount" style="color: var(--gold-accent);" id="carryVol">0 DMXC</div>
+                    <div class="carry-box">
+                        <div class="binary-title">CARRY FORWARD BALANCE</div>
+                        <div class="binary-val" style="color: var(--gold-accent);" id="carryBoxVol">0 DMXC</div>
                     </div>
 
-                    <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
-                        <i class="fa-solid fa-circle-info" style="color: var(--cyan-accent);"></i> 5% Binary Pair Bonus is matched instantly upon volume updates and credited directly to wallet.
+                    <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+                        <i class="fa-solid fa-circle-info" style="color: var(--cyan-accent);"></i> 5% Binary Pair Matching bonus is credited instantly to wallet upon matching.
                     </div>
                 </div>
 
-                <!-- Direct Referral Link Portal -->
-                <div class="portal-card">
-                    <h3 class="card-header-title"><i class="fa-solid fa-share-nodes"></i> Direct Referral Link</h3>
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">Share your custom link to earn 10% instant direct referral rewards on downline stakes.</p>
+                <!-- Referral Link Box -->
+                <div class="glass-card">
+                    <h3 class="card-title"><i class="fa-solid fa-share-nodes"></i> Direct Referral Link</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Earn 10% instant direct commission on all downline stakes.</p>
                     
-                    <div class="ref-box">
-                        <input type="text" class="input-field" id="userRefLink" readonly value="Connect Wallet to Generate Link">
-                        <button class="btn-copy" onclick="copyRefLink()"><i class="fa-solid fa-copy"></i> Copy</button>
+                    <div class="ref-wrapper">
+                        <input type="text" class="custom-input" id="userReferralLink" readonly value="Connect Wallet to Generate Link">
+                        <button class="btn-copy-ref" onclick="copyReferralLink()"><i class="fa-solid fa-copy"></i></button>
                     </div>
                 </div>
             </div>
@@ -475,68 +504,71 @@
 
     </div>
 
-    <!-- Web3 Scripts -->
+    <!-- Script Logic -->
     <script>
-        let selectedPlanId = 0;
-        let userAddress = null;
+        let chosenPlanId = 0;
+        let connectedWallet = null;
 
-        function selectPlan(planId) {
-            selectedPlanId = planId;
-            document.getElementById('plan6M').classList.toggle('active', planId === 0);
-            document.getElementById('plan1Y').classList.toggle('active', planId === 1);
+        function switchPlan(planId) {
+            chosenPlanId = planId;
+            document.getElementById('plan6M').classList.toggle('selected', planId === 0);
+            document.getElementById('plan1Y').classList.toggle('selected', planId === 1);
         }
 
-        async function connectMetaMask() {
+        async function connectWallet() {
             if (window.ethereum) {
                 try {
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    userAddress = accounts[0];
-                    document.getElementById('walletText').innerText = userAddress.substring(0, 6) + '...' + userAddress.substring(38);
+                    connectedWallet = accounts[0];
+                    document.getElementById('walletBtnText').innerText = connectedWallet.substring(0, 6) + '...' + connectedWallet.substring(38);
                     
-                    // Set referral link
-                    const refUrl = window.location.origin + window.location.pathname + '?ref=' + userAddress;
-                    document.getElementById('userRefLink').value = refUrl;
+                    // Generate Referral URL
+                    const refUrl = window.location.origin + window.location.pathname + '?ref=' + connectedWallet;
+                    document.getElementById('userReferralLink').value = refUrl;
 
-                    // Mock Balance Updates
-                    document.getElementById('dmxcBalance').innerText = '15,450 DMXC';
-                    document.getElementById('usdtBalance').innerText = '520.00 USDT';
-                    document.getElementById('totalStaked').innerText = '5,000 DMXC';
-                    document.getElementById('pendingYield').innerText = '12.4500 DMXC';
+                    // Mock data simulation for live feel
+                    document.getElementById('dmxcBal').innerText = '12,500.00';
+                    document.getElementById('usdtBal').innerText = '450.00';
+                    document.getElementById('stakedTotal').innerText = '5,000 DMXC';
+                    document.getElementById('pendingYield').innerText = '14.8250';
+                    document.getElementById('leftBoxVol').innerText = '25,000 DMXC';
+                    document.getElementById('rightBoxVol').innerText = '18,500 DMXC';
+                    document.getElementById('carryBoxVol').innerText = '6,500 DMXC';
 
-                } catch (error) {
-                    alert('Wallet connection failed!');
+                } catch (err) {
+                    alert('Wallet connection rejected.');
                 }
             } else {
-                alert('Please install MetaMask browser extension!');
+                alert('Please install MetaMask extension!');
             }
         }
 
-        function executeStake() {
-            const amount = document.getElementById('stakeAmount').value;
-            if(!userAddress) {
+        function submitStakeTransaction() {
+            const amt = document.getElementById('stakeInputAmount').value;
+            if(!connectedWallet) {
                 alert('Please connect your MetaMask wallet first!');
                 return;
             }
-            if(!amount || amount <= 0) {
-                alert('Enter a valid stake amount!');
+            if(!amt || amt <= 0) {
+                alert('Please enter a valid staking amount.');
                 return;
             }
-            alert(`Stake request submitted for ${amount} DMXC in Plan ${selectedPlanId === 0 ? '6 Months' : '1 Year'}!`);
+            alert(`Staking transaction initiated for ${amt} DMXC in ${chosenPlanId === 0 ? '6 Months' : '1 Year'} plan!`);
         }
 
-        function claimRewards(asUSDT) {
-            if(!userAddress) {
+        function claimYield(asUSDT) {
+            if(!connectedWallet) {
                 alert('Please connect your wallet first!');
                 return;
             }
-            alert(`Claiming rewards in ${asUSDT ? 'USDT' : 'DMXC'} mode executed!`);
+            alert(`Reward claim request processed in ${asUSDT ? 'USDT' : 'DMXC'} mode!`);
         }
 
-        function copyRefLink() {
-            const copyText = document.getElementById("userRefLink");
-            copyText.select();
+        function copyReferralLink() {
+            const inputField = document.getElementById("userReferralLink");
+            inputField.select();
             document.execCommand("copy");
-            alert("Referral link copied to clipboard!");
+            alert("Referral link copied successfully!");
         }
     </script>
 </body>
