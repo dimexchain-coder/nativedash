@@ -140,20 +140,20 @@
             </a>
         </nav>
 
-        <!-- Right Side Header Actions (Includes Mobile 3-Line Menu Button) -->
+        <!-- Right Side Header Actions -->
         <div class="flex items-center gap-3">
             <a href="https://www.dimexchain.tech/dash" target="_blank" class="hidden sm:flex gradient-btn-gold px-4 py-2.5 rounded-xl font-extrabold text-xs uppercase tracking-wider items-center gap-2">
-                <i class="fa-solid fa-vault"></i> Native Dash
+                <i class="fa-solid fa-vault"></i> Native Staking
             </a>
 
-            <!-- Mobile Hamburger Menu Button (3 Lines Restored) -->
+            <!-- Mobile Hamburger Menu Button -->
             <button onclick="toggleMobileMenu()" class="lg:hidden w-10 h-10 rounded-xl bg-bgCard border border-borderGlow text-white flex items-center justify-center text-xl">
                 <i class="fa-solid fa-bars" id="menu-icon"></i>
             </button>
         </div>
     </header>
 
-    <!-- Mobile Drawer Menu (Links restored for mobile menu) -->
+    <!-- Mobile Drawer Menu -->
     <div id="mobile-menu" class="fixed top-[69px] left-0 w-full bg-bgCard/95 border-b border-borderGlow backdrop-blur-2xl p-6 flex flex-col gap-4 hidden z-30 lg:hidden transition-all">
         <a href="#about" onclick="toggleMobileMenu()" class="text-white font-medium py-2 border-b border-borderGlow/50 flex justify-between items-center">
             <span>About Native Coin</span> <i class="fa-solid fa-chevron-right text-xs text-textSub"></i>
@@ -176,10 +176,10 @@
 
         <div class="pt-2 flex flex-col gap-3">
             <a href="https://www.dimexchain.tech/dash" target="_blank" class="gradient-btn-gold w-full text-center py-3 rounded-xl font-bold text-sm">
-                <i class="fa-solid fa-vault"></i> Open Native Staking
+                <i class="fa-solid fa-vault"></i> Native Staking
             </a>
             <a href="https://www.dimex.tech/dash" target="_blank" class="cyan-outline-btn w-full text-center py-3 rounded-xl font-bold text-sm">
-                <i class="fa-solid fa-coins"></i> Token Staking & Buy
+                <i class="fa-solid fa-coins"></i> Token Staking
             </a>
         </div>
     </div>
@@ -212,7 +212,7 @@
                     </a>
 
                     <a href="https://www.dimex.tech/dash" target="_blank" class="bg-accentCyan/10 border-2 border-accentCyan text-accentCyan hover:bg-accentCyan hover:text-black transition-all duration-300 px-7 py-3.5 rounded-xl font-extrabold text-sm uppercase tracking-wider flex items-center gap-2 shadow-cyan-glow">
-                        <i class="fa-solid fa-coins text-base"></i> Token Staking & Buy
+                        <i class="fa-solid fa-coins text-base"></i> Token Staking
                     </a>
 
                     <button onclick="addDimeXNetwork()" class="glass-panel hover:border-primaryGold transition-all duration-300 px-6 py-4 rounded-xl font-bold text-sm text-white flex items-center gap-2">
@@ -331,7 +331,7 @@
             </div>
         </section>
 
-        <!-- RPC PARAMETERS & ONE-CLICK CONNECT -->
+        <!-- RPC PARAMETERS & ONE-CLICK CONNECT (RPC URL RESTORED) -->
         <section id="rpc-section" class="max-w-7xl mx-auto px-4 lg:px-12 mb-24 scroll-mt-28">
             <div class="glass-panel-gold rounded-3xl p-8 lg:p-12">
                 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
@@ -344,7 +344,7 @@
                     </button>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
                     <div class="bg-bgMain/90 p-4 rounded-xl border border-borderGlow flex justify-between items-center">
                         <div>
                             <span class="text-[11px] text-textSub uppercase block mb-1">Network Name</span>
@@ -355,16 +355,23 @@
                     <div class="bg-bgMain/90 p-4 rounded-xl border border-borderGlow flex justify-between items-center">
                         <div>
                             <span class="text-[11px] text-textSub uppercase block mb-1">Chain ID</span>
-                            <span class="font-bold text-accentCyan font-mono text-sm">1723 (Hex: 0x6BB)</span>
+                            <span class="font-bold text-accentCyan font-mono text-sm">1723 (0x6BB)</span>
                         </div>
                         <button onclick="copyToClipboard('1723', 'Chain ID')" class="text-textSub hover:text-accentCyan text-base p-2"><i class="fa-regular fa-copy"></i></button>
                     </div>
                     <div class="bg-bgMain/90 p-4 rounded-xl border border-borderGlow flex justify-between items-center">
                         <div>
-                            <span class="text-[11px] text-textSub uppercase block mb-1">Currency Symbol</span>
+                            <span class="text-[11px] text-textSub uppercase block mb-1">Symbol</span>
                             <span class="font-bold text-primaryGold font-mono text-sm">DMXC</span>
                         </div>
-                        <button onclick="copyToClipboard('DMXC', 'Currency Symbol')" class="text-textSub hover:text-primaryGold text-base p-2"><i class="fa-regular fa-copy"></i></button>
+                        <button onclick="copyToClipboard('DMXC', 'Symbol')" class="text-textSub hover:text-primaryGold text-base p-2"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                    <div class="bg-bgMain/90 p-4 rounded-xl border border-borderGlow flex justify-between items-center">
+                        <div>
+                            <span class="text-[11px] text-textSub uppercase block mb-1">RPC URL</span>
+                            <span class="font-bold text-accentCyan font-mono text-xs truncate">https://rpc.dimexchain.tech</span>
+                        </div>
+                        <button onclick="copyToClipboard('https://rpc.dimexchain.tech', 'RPC URL')" class="text-textSub hover:text-accentCyan text-base p-2"><i class="fa-regular fa-copy"></i></button>
                     </div>
                     <div class="bg-bgMain/90 p-4 rounded-xl border border-borderGlow flex justify-between items-center">
                         <div>
@@ -377,7 +384,7 @@
             </div>
         </section>
 
-        <!-- ECOSYSTEM PORTALS -->
+        <!-- ECOSYSTEM PORTALS (CEX LINK & NATIVE/TOKEN STAKING UPDATED) -->
         <section id="ecosystem" class="max-w-7xl mx-auto px-4 lg:px-12 mb-24 scroll-mt-28">
             <div class="text-center mb-12">
                 <span class="text-xs font-bold uppercase tracking-widest text-primaryGold">Complete Native Infrastructure</span>
@@ -385,28 +392,31 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Native Staking -->
                 <div class="glass-panel p-8 rounded-3xl border-borderGlow flex flex-col justify-between hover:border-primaryGold transition-all">
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-primaryGold/10 border border-primaryGold/40 text-primaryGold flex items-center justify-center text-2xl mb-6">
                             <i class="fa-solid fa-vault"></i>
                         </div>
-                        <h3 class="text-xl font-extrabold text-white mb-2">Native Staking</h3>
-                        <p class="text-xs text-textSub leading-relaxed mb-6">Lock your DMXC coins into daily reward pools with automated yield distribution.</p>
+                        <h3 class="text-xl font-extrabold text-white mb-2">Native Coin Staking</h3>
+                        <p class="text-xs text-textSub leading-relaxed mb-6">Lock your native DMXC coins into high-yield native staking pools.</p>
                     </div>
                     <a href="https://www.dimexchain.tech/dash" target="_blank" class="gradient-btn-gold w-full text-center py-3 rounded-xl font-bold text-xs uppercase tracking-wider">Native Staking Dash</a>
                 </div>
 
+                <!-- Token Staking -->
                 <div class="glass-panel p-8 rounded-3xl border-borderGlow flex flex-col justify-between hover:border-accentCyan transition-all">
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-accentCyan/10 border border-accentCyan/40 text-accentCyan flex items-center justify-center text-2xl mb-6">
                             <i class="fa-solid fa-coins"></i>
                         </div>
-                        <h3 class="text-xl font-extrabold text-white mb-2">Token Staking & Buy</h3>
-                        <p class="text-xs text-textSub leading-relaxed mb-6">Token purchasing portal and high-yield staking vaults.</p>
+                        <h3 class="text-xl font-extrabold text-white mb-2">Token Staking</h3>
+                        <p class="text-xs text-textSub leading-relaxed mb-6">Token portal for high-yield staking vaults.</p>
                     </div>
-                    <a href="https://www.dimex.tech/dash" target="_blank" class="cyan-outline-btn w-full text-center py-3 rounded-xl font-bold text-xs uppercase tracking-wider">Token Dash & Buy</a>
+                    <a href="https://www.dimex.tech/dash" target="_blank" class="cyan-outline-btn w-full text-center py-3 rounded-xl font-bold text-xs uppercase tracking-wider">Token Staking Dash</a>
                 </div>
 
+                <!-- Block Explorer -->
                 <div class="glass-panel p-8 rounded-3xl border-borderGlow flex flex-col justify-between hover:border-accentPurple transition-all">
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-accentPurple/10 border border-accentPurple/40 text-accentPurple flex items-center justify-center text-2xl mb-6">
@@ -418,20 +428,21 @@
                     <a href="https://explorer.dimexchain.tech" target="_blank" class="border-2 border-accentPurple text-accentPurple hover:bg-accentPurple hover:text-white transition-all w-full text-center py-3 rounded-xl font-bold text-xs uppercase tracking-wider">Open Explorer</a>
                 </div>
 
+                <!-- Native CEX Link (URL: www.cex.dimexchain.tech) -->
                 <div class="glass-panel p-8 rounded-3xl border-borderGlow flex flex-col justify-between hover:border-accentGreen transition-all">
                     <div>
                         <div class="w-14 h-14 rounded-2xl bg-accentGreen/10 border border-accentGreen/40 text-accentGreen flex items-center justify-center text-2xl mb-6">
-                            <i class="fa-solid fa-file-pdf"></i>
+                            <i class="fa-solid fa-right-left"></i>
                         </div>
-                        <h3 class="text-xl font-extrabold text-white mb-2">Whitepaper (PDF)</h3>
-                        <p class="text-xs text-textSub leading-relaxed mb-6">Read official DimeX whitepaper and tokenomics specifications.</p>
+                        <h3 class="text-xl font-extrabold text-white mb-2">DimeX CEX Exchange</h3>
+                        <p class="text-xs text-textSub leading-relaxed mb-6">Official DimeX Centralized Exchange Portal for native trading.</p>
                     </div>
-                    <a href="https://raw.githubusercontent.com/dimex1601-dev/DimeX---Profile-/main/DimeX%20(DMX)%20%20Whitepaper.pdf" target="_blank" class="border-2 border-accentGreen text-accentGreen hover:bg-accentGreen hover:text-black transition-all w-full text-center py-3 rounded-xl font-bold text-xs uppercase tracking-wider">Read Whitepaper</a>
+                    <a href="https://www.cex.dimexchain.tech" target="_blank" class="border-2 border-accentGreen text-accentGreen hover:bg-accentGreen hover:text-black transition-all w-full text-center py-3 rounded-xl font-bold text-xs uppercase tracking-wider">Open CEX Portal</a>
                 </div>
             </div>
         </section>
 
-        <!-- INTERACTIVE YIELD CALCULATOR ONLY (STAKING WORDS REMOVED) -->
+        <!-- YIELD CALCULATOR ONLY -->
         <section id="calculator" class="max-w-4xl mx-auto px-4 lg:px-12 mb-24 scroll-mt-28">
             <div class="glass-panel rounded-3xl p-8 lg:p-12 border-borderGlow">
                 <div class="text-center mb-10">
@@ -517,7 +528,7 @@
             </div>
         </section>
 
-        <!-- ROADMAP SECTION (CEX TARGET BOX RESTORED) -->
+        <!-- ROADMAP SECTION -->
         <section id="roadmap" class="max-w-5xl mx-auto px-4 lg:px-12 mb-24 scroll-mt-28">
             <div class="text-center mb-12">
                 <span class="text-xs font-bold uppercase tracking-widest text-primaryGold">Strategic Execution</span>
@@ -561,7 +572,7 @@
 
     </main>
 
-    <!-- FOOTER (TELEGRAM, X, GITHUB & CONTACT RESTORED) -->
+    <!-- FOOTER -->
     <footer class="bg-[#02060e] border-t border-borderGlow/80 relative z-10 py-12 px-4 lg:px-12">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
             
@@ -584,9 +595,9 @@
                 <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Portals & Tools</h4>
                 <ul class="space-y-2 text-xs text-textSub">
                     <li><a href="https://www.dimexchain.tech/dash" target="_blank" class="hover:text-primaryGold">Native Staking Dash</a></li>
-                    <li><a href="https://www.dimex.tech/dash" target="_blank" class="hover:text-primaryGold">Token Staking & Buy</a></li>
+                    <li><a href="https://www.dimex.tech/dash" target="_blank" class="hover:text-primaryGold">Token Staking</a></li>
                     <li><a href="https://explorer.dimexchain.tech" target="_blank" class="hover:text-primaryGold">Block Explorer</a></li>
-                    <li><a href="https://raw.githubusercontent.com/dimex1601-dev/DimeX---Profile-/main/DimeX%20(DMX)%20%20Whitepaper.pdf" target="_blank" class="hover:text-primaryGold">Whitepaper (PDF)</a></li>
+                    <li><a href="https://www.cex.dimexchain.tech" target="_blank" class="hover:text-primaryGold">CEX Portal</a></li>
                 </ul>
             </div>
 
